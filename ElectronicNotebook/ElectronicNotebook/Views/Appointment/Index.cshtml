@@ -67,9 +67,9 @@
                     @Html.DisplayFor(modelItem => item.Professional.lastName2)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @*@Html.ActionLink("Edit", "Edit", new { date = item.date , time = item.time  }) |
+                    @Html.ActionLink("Details", "Details", new { date = item.date, time = item.time }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { date = item.date, time = item.time })
                 </td>
             </tr>
         }

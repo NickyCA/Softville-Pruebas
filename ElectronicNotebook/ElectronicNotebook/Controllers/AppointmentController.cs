@@ -19,21 +19,17 @@ namespace ElectronicNotebook.Controllers
         {
             var appointments = db.Appointments.Include(a => a.Patient).Include(a => a.Professional);
 
-            //IQueryable<Appointment> appointments =
-            //from appointment in db.Appointments
-            //select appointment;
-
             return View(appointments.ToList());
         }
 
         // GET: Appointment/Details/5
-        public ActionResult Details(DateTime id)
+        public ActionResult Details(DateTime date, TimeSpan time)
         {
-            if (id == null)
+            if (date == null || time == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Appointment appointment = db.Appointments.Find(id);
+            Appointment appointment = db.Appointments.Find(date, time);
             if (appointment == null)
             {
                 return HttpNotFound();
@@ -69,13 +65,13 @@ namespace ElectronicNotebook.Controllers
         }
 
         // GET: Appointment/Edit/5
-        public ActionResult Edit(DateTime id)
+        public ActionResult Edit(DateTime date, TimeSpan time)
         {
-            if (id == null)
+            if (date == null || time == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Appointment appointment = db.Appointments.Find(id);
+            Appointment appointment = db.Appointments.Find(date, time);
             if (appointment == null)
             {
                 return HttpNotFound();
@@ -104,13 +100,13 @@ namespace ElectronicNotebook.Controllers
         }
 
         // GET: Appointment/Delete/5
-        public ActionResult Delete(DateTime id)
+        public ActionResult Delete(DateTime date, TimeSpan time)
         {
-            if (id == null)
+            if (date == null || time == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Appointment appointment = db.Appointments.Find(id);
+            Appointment appointment = db.Appointments.Find(date , time);
             if (appointment == null)
             {
                 return HttpNotFound();
@@ -121,9 +117,9 @@ namespace ElectronicNotebook.Controllers
         // POST: Appointment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(DateTime id)
+        public ActionResult DeleteConfirmed(DateTime date, TimeSpan time)
         {
-            Appointment appointment = db.Appointments.Find(id);
+            Appointment appointment = db.Appointments.Find(date, time);
             db.Appointments.Remove(appointment);
             db.SaveChanges();
             return RedirectToAction("Index");

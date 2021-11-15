@@ -18,6 +18,11 @@ namespace ElectronicNotebook.Controllers
         public ActionResult Index()
         {
             var appointments = db.Appointments.Include(a => a.Patient).Include(a => a.Professional);
+
+            //IQueryable<Appointment> appointments =
+            //from appointment in db.Appointments
+            //select appointment;
+
             return View(appointments.ToList());
         }
 

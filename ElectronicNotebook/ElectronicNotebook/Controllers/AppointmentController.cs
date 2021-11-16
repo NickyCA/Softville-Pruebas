@@ -69,7 +69,7 @@ namespace ElectronicNotebook.Controllers
             return View(appointment);
         }
 
-        GET: Appointment/Edit/5
+        //GET: Appointment/Edit/5
         public ActionResult Edit(DateTime date, TimeSpan time)
         {
             if (date == null || time == null)

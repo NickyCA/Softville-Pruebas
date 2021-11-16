@@ -48,13 +48,30 @@ namespace ElectronicNotebook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,password")] Secretary secretary)
         {
+            int input_id = secretary.id;
+            string input_password = secretary.password;
+
+            System.Diagnostics.Debug.WriteLine(secretary.id);
+            System.Diagnostics.Debug.WriteLine(secretary.password);
+            
             if (ModelState.IsValid)
             {
+                secretary = db.Secretaries.Find(secretary.id);
+                if (secretary == null)
+                 {
+                    ModelState.AddModelError(string.Empty, "Invalid UserName.");
+                    return View(secretary);
+                }
+                
+                if (secretary.password != input_password)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid Password.");
+                    return View(secretary);
+                }
                
+
                 return RedirectToAction("Index","Appointment");
             }
-           // Appointment appointment = db.Appointments.Find(id); ;
-            //return View(appointment);
 
             return View(secretary);
 

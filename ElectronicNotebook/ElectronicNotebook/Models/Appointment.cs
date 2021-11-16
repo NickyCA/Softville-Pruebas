@@ -11,9 +11,11 @@ namespace ElectronicNotebook.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Appointment
     {
+    
         public System.DateTime date { get; set; }
         public System.TimeSpan time { get; set; }
         public int patientId { get; set; }

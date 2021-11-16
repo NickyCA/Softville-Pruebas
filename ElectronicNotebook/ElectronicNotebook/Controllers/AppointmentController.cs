@@ -41,8 +41,8 @@ namespace ElectronicNotebook.Controllers
         // GET: Appointment/Create
         public ActionResult Create()
         {
-            ViewBag.patientId = new SelectList(db.Patients, "id", "name");
-            ViewBag.professionalId = new SelectList(db.Professionals, "id", "name");
+            ViewBag.patientId = new SelectList(db.Patients, "id", "id");
+            ViewBag.professionalId = new SelectList(db.Professionals, "id", "id");
             return View();
         }
 
@@ -64,8 +64,8 @@ namespace ElectronicNotebook.Controllers
             } catch {
                 Response.Write("<script language=javascript>alert('Ya hay una cita agendada a la hora y fecha digitadas. Por favor agendarla en otro momento. Volverá a la página de registro de citas.')</script>");
             }
-            ViewBag.patientId = new SelectList(db.Patients, "id", "name", appointment.patientId);
-            ViewBag.professionalId = new SelectList(db.Professionals, "id", "name", appointment.professionalId);
+            ViewBag.patientId = new SelectList(db.Patients, "id", "id", appointment.patientId);
+            ViewBag.professionalId = new SelectList(db.Professionals, "id", "id", appointment.professionalId);
             return View(appointment);
         }
 

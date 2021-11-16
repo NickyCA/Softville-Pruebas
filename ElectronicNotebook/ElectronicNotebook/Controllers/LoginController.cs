@@ -46,16 +46,18 @@ namespace ElectronicNotebook.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,lastName1,lastName2,password")] Secretary secretary)
+        public ActionResult Create([Bind(Include = "id,password")] Secretary secretary)
         {
             if (ModelState.IsValid)
             {
-                db.Secretaries.Add(secretary);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+               
+                return RedirectToAction("Index","Appointment");
             }
+           // Appointment appointment = db.Appointments.Find(id); ;
+            //return View(appointment);
 
             return View(secretary);
+
         }
 
         // GET: Login/Edit/5

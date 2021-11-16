@@ -10,6 +10,10 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+delete from Appointment
+delete from Secretary
+delete from Professional
+delete from Patients
 
 INSERT INTO Secretary (name, lastName1, lastName2, id, password)
 VALUES ('Veronica', 'Hernández', 'Chavarría', 207540415, 'admin1234'),
@@ -19,7 +23,8 @@ VALUES ('Veronica', 'Hernández', 'Chavarría', 207540415, 'admin1234'),
 INSERT INTO Patients(name, lastName1, lastName2, id, email, phone)
 VALUES ('Adriana', 'Torres', 'Quesada', 501240597, 'adriana@gmail.com', 87415412),
 	   ('Alexander', 'Aguilar', 'Blanco', 401230987, 'alexander@gmail.com', 87462542),
-	   ('Diego', 'Lopez', 'Guerrero', 601240784, 'diego@gmail.com', 87958812)
+	   ('Diego', 'Lopez', 'Guerrero', 601240784, 'diego@gmail.com', 87958812),
+	   ('Randall', 'Guillén', 'Solano', 701240995, 'randall@gmail.com', 84510326)
 
 INSERT INTO Professional (name, lastName1, lastName2, id, speciality)
 VALUES ('Laura', 'García', 'Rojas', 301240497, 'Otorrinolaringólogía'),
@@ -29,4 +34,5 @@ VALUES ('Laura', 'García', 'Rojas', 301240497, 'Otorrinolaringólogía'),
 INSERT INTO Appointment(date, time, patientId, professionalId)
 VALUES ('2020-12-15', '13:00', 501240597, 301240497 ),
 	   ('2020-12-16', '17:00', 401230987, 701420654 ),
-	   ('2021-01-10', '11:00', 601240784, 709540329 )
+	   ('2021-01-10', '11:00', 601240784, 709540329 ),
+	   ('2023-08-10', '10:00', 701240995, 301240497)

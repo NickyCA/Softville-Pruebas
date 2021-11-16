@@ -15,8 +15,9 @@ namespace ElectronicNotebook.Models
 
     public partial class Appointment
     {
-    
+        [Key]
         public System.DateTime date { get; set; }
+        [Key]
         public System.TimeSpan time { get; set; }
         public int patientId { get; set; }
         public int professionalId { get; set; }

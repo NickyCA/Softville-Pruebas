@@ -1,5 +1,4 @@
 ﻿@model ElectronicNotebook.Models.Appointment
-
 @{
     ViewBag.Title = "Create";
 }
@@ -7,10 +6,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Appointment</h4>
         <hr />
@@ -24,7 +23,7 @@
                 {
 
                     @Html.ValidationMessageFor(model => model.date, "Date must be in the format yyyy-mm-dd", new { @class = "text-danger" })
-                
+
                 }
             </div>
         </div>

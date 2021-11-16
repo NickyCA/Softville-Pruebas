@@ -4,36 +4,79 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div id="links">
+        @Html.ActionLink("Registrar pacientes", "", "", null, new { style = "font-size: large;color: #0E73F6;margin: 1%" })
+        @Html.ActionLink("Registrar citas de pacientes", "", "", null, new { style = "font-size: large;color: #0E73F6;margin: 1%" })
+        @Html.ActionLink("Generar reporte", "", "", null, new { style = "font-size: large;color: #0E73F6;margin: 1%" })
+    </div>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Patient.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Professional.name)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Patient.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Professional.name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<h1>Citas Próximas</h1>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+
+    <table class="table table-striped design">       
+
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.date)*@
+                Fecha
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.time)*@
+                Hora
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Patient.name)*@
+                Nombre del paciente
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Professional.name)*@
+                Nombre del profesional que atiende
+            </th>
+
+            <th></th>
+
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="largeContent">
+                    @Html.DisplayFor(modelItem => item.date.Day) /
+                    @Html.DisplayFor(modelItem => item.date.Month) /
+                    @Html.DisplayFor(modelItem => item.date.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.name)
+                    @Html.DisplayFor(modelItem => item.Patient.lastName1)
+                    @Html.DisplayFor(modelItem => item.Patient.lastName2)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Professional.name)
+                    @Html.DisplayFor(modelItem => item.Professional.lastName1)
+                    @Html.DisplayFor(modelItem => item.Professional.lastName2)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { date = item.date , time = item.time  }) |
+                    @Html.ActionLink("Details", "Details", new { date = item.date, time = item.time }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { date = item.date, time = item.time })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+@section Scripts
+{
+    <link href="~/Content/Appointments.css" rel="stylesheet" />
 }
-
-</table>

@@ -22,82 +22,82 @@ namespace ElectronicNotebook.Controllers
             return View(appointments.ToList());
         }
 
-        // GET: Appointment/Details/5
-        public ActionResult Details(DateTime date, TimeSpan time)
-        {
-            if (date == null || time == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Appointment appointment = db.Appointments.Find(date, time);
-            if (appointment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(appointment);
-        }
+        //// GET: Appointment/Details/5
+        //public ActionResult Details(DateTime date, TimeSpan time)
+        //{
+        //    if (date == null || time == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Appointment appointment = db.Appointments.Find(date, time);
+        //    if (appointment == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(appointment);
+        //}
 
-        // GET: Appointment/Create
-        public ActionResult Create()
-        {
-            ViewBag.patientId = new SelectList(db.Patients, "id", "name");
-            ViewBag.professionalId = new SelectList(db.Professionals, "id", "name");
-            return View();
-        }
+        //// GET: Appointment/Create
+        //public ActionResult Create()
+        //{
+        //    ViewBag.patientId = new SelectList(db.Patients, "id", "name");
+        //    ViewBag.professionalId = new SelectList(db.Professionals, "id", "name");
+        //    return View();
+        //}
 
-        // POST: Appointment/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "date,time,patientId,professionalId")] Appointment appointment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Appointments.Add(appointment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Appointment/Create
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "date,time,patientId,professionalId")] Appointment appointment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Appointments.Add(appointment);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            ViewBag.patientId = new SelectList(db.Patients, "id", "name", appointment.patientId);
-            ViewBag.professionalId = new SelectList(db.Professionals, "id", "name", appointment.professionalId);
-            return View(appointment);
-        }
+        //    ViewBag.patientId = new SelectList(db.Patients, "id", "name", appointment.patientId);
+        //    ViewBag.professionalId = new SelectList(db.Professionals, "id", "name", appointment.professionalId);
+        //    return View(appointment);
+        //}
 
         // GET: Appointment/Edit/5
-        public ActionResult Edit(DateTime date, TimeSpan time)
-        {
-            if (date == null || time == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Appointment appointment = db.Appointments.Find(date, time);
-            if (appointment == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.patientId = new SelectList(db.Patients, "id", "name", appointment.patientId);
-            ViewBag.professionalId = new SelectList(db.Professionals, "id", "name", appointment.professionalId);
-            return View(appointment);
-        }
+        //public ActionResult Edit(DateTime date, TimeSpan time)
+        //{
+        //    if (date == null || time == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Appointment appointment = db.Appointments.Find(date, time);
+        //    if (appointment == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.patientId = new SelectList(db.Patients, "id", "name", appointment.patientId);
+        //    ViewBag.professionalId = new SelectList(db.Professionals, "id", "name", appointment.professionalId);
+        //    return View(appointment);
+        //}
 
-        // POST: Appointment/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "date,time,patientId,professionalId")] Appointment appointment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(appointment).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.patientId = new SelectList(db.Patients, "id", "name", appointment.patientId);
-            ViewBag.professionalId = new SelectList(db.Professionals, "id", "name", appointment.professionalId);
-            return View(appointment);
-        }
+        //// POST: Appointment/Edit/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "date,time,patientId,professionalId")] Appointment appointment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(appointment).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.patientId = new SelectList(db.Patients, "id", "name", appointment.patientId);
+        //    ViewBag.professionalId = new SelectList(db.Professionals, "id", "name", appointment.professionalId);
+        //    return View(appointment);
+        //}
 
         // GET: Appointment/Delete/5
         public ActionResult Delete(DateTime date, TimeSpan time)

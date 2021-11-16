@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicNotebook", "ElectronicNotebook\ElectronicNotebook.csproj", "{9450B4A3-2EA4-4606-B713-173D95A4AE0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicNotebookTest", "ElectronicNotebookTest\ElectronicNotebookTest.csproj", "{6EF15983-47DC-4688-B66E-F89FB983F523}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicNotebookTesting", "ElectronicNotebookTesting\ElectronicNotebookTesting.csproj", "{1CF653FB-8538-49E2-B991-25CC9C126F98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{9450B4A3-2EA4-4606-B713-173D95A4AE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9450B4A3-2EA4-4606-B713-173D95A4AE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9450B4A3-2EA4-4606-B713-173D95A4AE0A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6EF15983-47DC-4688-B66E-F89FB983F523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EF15983-47DC-4688-B66E-F89FB983F523}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EF15983-47DC-4688-B66E-F89FB983F523}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EF15983-47DC-4688-B66E-F89FB983F523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF653FB-8538-49E2-B991-25CC9C126F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF653FB-8538-49E2-B991-25CC9C126F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF653FB-8538-49E2-B991-25CC9C126F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF653FB-8538-49E2-B991-25CC9C126F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

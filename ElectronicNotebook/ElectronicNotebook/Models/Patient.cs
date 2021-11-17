@@ -13,6 +13,7 @@ namespace ElectronicNotebook.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+
     public partial class Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,23 +22,30 @@ namespace ElectronicNotebook.Models
             this.Appointments = new HashSet<Appointment>();
         }
 
-        [Required(ErrorMessage = "Cédula requerida")]
+        [Required(ErrorMessage = "Cédula requerida ")]
+        [RegularExpression("[1-9]{1}[0]{1}[0-9]{3}[0]{1}[0-9]{3}", ErrorMessage = "Formato #0###0###")]
         public int id { get; set; }
 
         [Required(ErrorMessage = "Ingrese nombre")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use solo letras")]
         public string name { get; set; }
 
         [Required(ErrorMessage = "Ingrese apellido")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use solo letras")]
         public string lastName1 { get; set; }
 
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use solo letras")]
         public string lastName2 { get; set; }
 
         [Required(ErrorMessage = "Ingrese correo")]
+        [EmailAddress(ErrorMessage = "Ingrese correo válido")]
         public string email { get; set; }
 
         [Required(ErrorMessage = "Ingrese teléfono")]
+        [RegularExpression("[1-9]{8}", ErrorMessage = "Cantidad de numeros inválido")]
         public int phone { get; set; }
     
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
     }

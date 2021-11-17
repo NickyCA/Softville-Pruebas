@@ -35,7 +35,7 @@
             @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
             {
 
-                @Html.ValidationMessageFor(model => model.date, "La hora debe de estar en el formato hh:mm", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.time, "La hora debe de estar en el formato hh:mm", new { @class = "text-danger" })
 
             }
         </div>

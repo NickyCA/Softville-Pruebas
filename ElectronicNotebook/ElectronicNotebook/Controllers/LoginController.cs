@@ -70,7 +70,7 @@ namespace ElectronicNotebook.Controllers
                 }
                
 
-                return RedirectToAction("Index","Appointment");
+                return RedirectToAction("Index","Home");
             }
 
             return View(secretary);

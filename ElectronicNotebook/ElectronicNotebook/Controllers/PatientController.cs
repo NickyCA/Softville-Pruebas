@@ -59,7 +59,7 @@ namespace ElectronicNotebook.Controllers
             }
             catch
             {
-                Response.Write("<script language=javascript>alert('Cédula no valida o repetida')</script>");
+                Response.Write("<script language=javascript>alert('Cédula de paciente ya registrada')</script>");
             }
             return View(patient);
         }

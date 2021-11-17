@@ -11,7 +11,8 @@ namespace ElectronicNotebook.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,22 @@ namespace ElectronicNotebook.Models
         {
             this.Appointments = new HashSet<Appointment>();
         }
-    
+
+        [Required(ErrorMessage = "Cédula requerida")]
         public int id { get; set; }
+
+        [Required(ErrorMessage = "Ingrese nombre")]
         public string name { get; set; }
+
+        [Required(ErrorMessage = "Ingrese apellido")]
         public string lastName1 { get; set; }
+
         public string lastName2 { get; set; }
+
+        [Required(ErrorMessage = "Ingrese correo")]
         public string email { get; set; }
+
+        [Required(ErrorMessage = "Ingrese teléfono")]
         public int phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

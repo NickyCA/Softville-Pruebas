@@ -48,13 +48,19 @@ namespace ElectronicNotebook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,name,lastName1,lastName2,email,phone")] Patient patient)
         {
-            if (ModelState.IsValid)
+            try
+            {
+                if (ModelState.IsValid)
             {
                 db.Patients.Add(patient);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            }
+            catch
+            {
+                Response.Write("<script language=javascript>alert('Cédula no valida o repetida')</script>");
+            }
             return View(patient);
         }
 

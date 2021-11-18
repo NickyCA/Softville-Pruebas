@@ -17,32 +17,35 @@ namespace ElectronicNotebookTesting.Controllers
         {
             PatientController controller = new PatientController();
             Patient patient = new Patient();
-            patient.id = 705470144;
-            patient.name = "Carlos";
-            patient.lastName1 = "Alvarado";
-            patient.email = "carAl@gmail.cm";
-            patient.phone = 25698744 ;
-            ViewResult result = controller.Create(patient) as ViewResult;
-            Assert.AreEqual("Index", controller.Create(patient));
+            patient.id = 101110111;
+            patient.name = "Prueba";
+            patient.lastName1 = "Prueba";
+            patient.email = "Prueba@gmail.cm";
+            patient.phone = 11111111 ;
+            ViewResult vista = controller.Create(patient) as ViewResult;
+            Assert.IsNotNull(vista);
             DeleteConfirmed(patient.id);
         }
 
+        //
         [TestMethod]
         public void CreateInValidPatient()
         {
             PatientController controller = new PatientController();
             Patient patient = new Patient();
-            patient.id = 305550333;
-            patient.name = "Carolina";
-            patient.lastName1 = "Sanchez";
-            patient.email = "caro@gmail.cm";
-            patient.phone = 74142525;
-            ViewResult result = controller.Create(patient) as ViewResult;
-            RedirectToRouteResult vista = controller.Create(patient) as
-            RedirectToRouteResult;
+            patient.id = 101110111;
+            patient.name = "Prueba";
+            patient.lastName1 = "Prueba";
+            patient.email = "Prueba@gmail.cm";
+            patient.phone = 11111111;
+            //inserta un nuevo paciente valido
+            ViewResult vista = controller.Create(patient) as ViewResult;
 
-            //Assert 
-            Assert.AreEqual("Index", vista.RouteValues["action"]);
+            //segunda insercion invalida por que ya se encuentra en la bd
+            ViewResult vista2 = controller.Create(patient) as ViewResult;
+
+            Assert.IsNull(vista2);
+            DeleteConfirmed(patient.id);
         }
         /*
         [TestMethod]

@@ -39,14 +39,14 @@ namespace ElectronicNotebook.Controllers
             {
                 db.Patients.Add(patient);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return View("Index", db.Patients.ToList());
             }
             }
             catch (Exception ex)
             {
 
                 Response.Write("<script language=javascript>alert('Cédula de paciente ya registrada')</script>");
-                //return View(ex.Message);
+                return View(ex.Message);
             }
             return View(patient);
         }

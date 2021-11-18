@@ -17,7 +17,7 @@ namespace ElectronicNotebookTesting.Controllers
             AppointmentController controller = new AppointmentController();
             ViewResult result = controller.Index() as ViewResult;
             List<Appointment> appointments = (List<Appointment>)result.ViewData.Model; 
-            Assert.AreEqual(4 , appointments.Count);
+            Assert.AreEqual(3 , appointments.Count);
         }
     }
 }

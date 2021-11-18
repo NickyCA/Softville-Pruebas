@@ -42,9 +42,11 @@ namespace ElectronicNotebook.Controllers
                 return RedirectToAction("Index");
             }
             }
-            catch
+            catch (Exception ex)
             {
+
                 Response.Write("<script language=javascript>alert('Cédula de paciente ya registrada')</script>");
+                //return View(ex.Message);
             }
             return View(patient);
         }
@@ -94,8 +96,8 @@ namespace ElectronicNotebook.Controllers
            }
            return View(patient);
        }
-       */
-        // GET: Patient/Delete/5
+
+             // GET: Patient/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -129,6 +131,8 @@ namespace ElectronicNotebook.Controllers
             }
             return View(patient);
         }
+
+       */
 
         protected override void Dispose(bool disposing)
         {

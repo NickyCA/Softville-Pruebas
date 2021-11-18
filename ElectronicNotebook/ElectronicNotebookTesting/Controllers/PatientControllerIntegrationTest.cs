@@ -4,6 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
+
 
 namespace ElectronicNotebookTesting.Controllers
 {
@@ -40,14 +42,14 @@ namespace ElectronicNotebookTesting.Controllers
             patient.phone = 11111111;
             //inserta un nuevo paciente valido
             ViewResult vista = controller.Create(patient) as ViewResult;
-
             //segunda insercion invalida por que ya se encuentra en la bd
             ViewResult vista2 = controller.Create(patient) as ViewResult;
-
-            Assert.IsNull(vista2);
+            //tienen vistas diferentes ya que al crear un paciente valido se ve en la lista de pacientes
+            //al crear uno invalido devuelve a la vista de crear paciente
+            Assert.AreNotEqual(vista2,vista);            
             DeleteConfirmed(patient.id);
         }
-        /*
+       
         [TestMethod]
         public void CorrectQuantityOfPatients()
         {
@@ -55,9 +57,9 @@ namespace ElectronicNotebookTesting.Controllers
             PatientController patientcontroller = new PatientController();
             ViewResult result = patientcontroller.Index() as ViewResult;
             List<Patient> patients = (List<Patient>)result.ViewData.Model;
-            Assert.AreEqual(7, patients.Count);
+            Assert.AreEqual(db.Patients.ToList().Count, patients.Count);
         }
-        */
+        
 
         public void DeleteConfirmed(int id)
         {

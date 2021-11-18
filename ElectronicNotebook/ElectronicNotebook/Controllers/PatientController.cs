@@ -44,9 +44,9 @@ namespace ElectronicNotebook.Controllers
             }
             catch (Exception ex)
             {
-
-                Response.Write("<script language=javascript>alert('Cédula de paciente ya registrada')</script>");
-                return View(ex.Message);
+                //Response.Write("<script language=javascript>alert('Cédula de paciente ya registrada')</script>");
+                ViewBag.ErrorMessage = "Cédula de paciente ya registrada";
+                return View(patient);
             }
             return View(patient);
         }

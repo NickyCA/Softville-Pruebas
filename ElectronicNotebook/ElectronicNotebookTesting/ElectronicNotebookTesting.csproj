@@ -78,8 +78,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AppointmentControllerUnitTest.cs" />
+    <Compile Include="Controllers\AppointmentControllerIntegrationTest.cs" />
     <Compile Include="Controllers\AppointmentControllerTest.cs" />
-    <Compile Include="Controllers\PatientControllerTest.cs" />
+    <Compile Include="Controllers\LoginControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

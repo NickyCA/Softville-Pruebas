@@ -4,54 +4,59 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1>Lista de pacientes</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-striped design">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.name)
+            Cédula
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lastName1)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lastName2)
+            Primer apellido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.email)
+            Segundo apellido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.phone)
+            Correo
+        </th>
+        <th>
+            Teléfono
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastName1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastName2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            
+        </tr>
+    }
 
 </table>
+
+@section Scripts
+{
+    <link href="~/Content/Appointments.css" rel="stylesheet" />
+}

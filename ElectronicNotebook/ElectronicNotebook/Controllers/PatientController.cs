@@ -17,7 +17,7 @@ namespace ElectronicNotebook.Controllers
         // GET: Patient
         public ActionResult Index()
         {
-            return View(db.Patients.ToList());
+            return View("Index",db.Patients.ToList());
         }
 
         // GET: Patient/Details/5
@@ -38,7 +38,7 @@ namespace ElectronicNotebook.Controllers
         // GET: Patient/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: Patient/Create
@@ -107,7 +107,7 @@ namespace ElectronicNotebook.Controllers
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View("Delete",patient);
         }
 
         // POST: Patient/Delete/5

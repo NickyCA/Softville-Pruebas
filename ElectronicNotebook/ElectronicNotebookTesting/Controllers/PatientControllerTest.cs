@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using ElectronicNotebook.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ElectronicNotebook.Controllers;
-using ElectronicNotebook;
+using System.Web.Mvc;
 
 
 namespace ElectronicNotebookTesting
@@ -47,5 +42,7 @@ namespace ElectronicNotebookTesting
             ViewResult result = controller.Create() as ViewResult;
             Assert.IsNotNull(result);
         }
+
+       
     }
 }

@@ -38,7 +38,8 @@ namespace ElectronicNotebook.Controllers
         // GET: Login/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.Message = "Login for secretary.";
+            return View("Create");
         }
 
         // POST: Login/Create

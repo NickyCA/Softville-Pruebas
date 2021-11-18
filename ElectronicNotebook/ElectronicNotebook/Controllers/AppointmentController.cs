@@ -70,7 +70,7 @@ namespace ElectronicNotebook.Controllers
             {
                 return HttpNotFound();
             }
-            return View(appointment);
+            return View("Delete" , appointment);
         }
 
         // POST: Appointment/Delete/5

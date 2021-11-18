@@ -67,19 +67,21 @@
             @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
         </div>
     </div>
-    <p>@ViewBag.ErrorMessage</p>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Registrar" class="btn btn-default" />
+   
+        <h4 class="text-danger">@ViewBag.ErrorMessage</h4>
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Ver lista de pacientes", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Ver lista de pacientes", "Index")
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

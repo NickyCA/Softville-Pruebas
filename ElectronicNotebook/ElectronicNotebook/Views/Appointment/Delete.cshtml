@@ -4,27 +4,36 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Está seguro de que desea eliminar esta cita?</h3>
 <div>
-    <h4>Appointment</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Patient.name)
+            Nombre del paciente
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Patient.name)
+            @Html.DisplayFor(model => model.Patient.lastName1)
+            @Html.DisplayFor(model => model.Patient.lastName2)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Professional.name)
+            Fecha
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Professional.name)
+            @Html.DisplayFor(model => model.date.Day) /
+            @Html.DisplayFor(model => model.date.Month) /
+            @Html.DisplayFor(model => model.date.Year)
+        </dd>
+
+        <dt>
+            Hora
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.time)
         </dd>
 
     </dl>

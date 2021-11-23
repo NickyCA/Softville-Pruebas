@@ -18,7 +18,11 @@ namespace ElectronicNotebook.Controllers
         // GET: Appointment
         public ActionResult Index()
         {
-            var appointments = db.Appointments.Include(a => a.Patient).Include(a => a.Professional);
+            var appointments = db.Appointments.Include(a => a.Patient).Include(a => a.Professional)
+                //.OrderBy(a => a.date.Year)
+                //.OrderBy(a => a.date.Month)
+                //.OrderBy(a => a.date.Day)
+                ;
 
             return View("Index" , appointments.ToList());
         }

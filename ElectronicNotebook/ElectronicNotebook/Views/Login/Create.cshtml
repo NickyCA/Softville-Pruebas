@@ -1,0 +1,56 @@
+﻿@model ElectronicNotebook.Models.Secretary
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div id="page-login" class="container-login">
+    <h2>Inicio de Sesión</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container-login">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group container-login">
+                <strong class="" >Cédula</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group container-login">
+                <strong>Contraseña</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password" }})
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div >
+                    <input type="submit" value="Inicio de Sesión" class="btn btn-default" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div >
+                    <input type="submit" value="Registrarse" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="~/Content/Login.css" rel="stylesheet" />
+
+}

@@ -17,10 +17,41 @@ namespace ElectronicNotebook.Controllers
         // GET: Patient
         public ActionResult Index()
         {
-            return View(db.Patients.ToList());
+            return View("Index",db.Patients.ToList());
         }
 
-        // GET: Patient/Details/5
+        // GET: Patient/Create
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
+
+        // POST: Patient/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id,name,lastName1,lastName2,email,phone")] Patient patient)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+            {
+                db.Patients.Add(patient);
+                db.SaveChanges();
+                return View("Index", db.Patients.ToList());
+            }
+            }
+            catch (Exception ex)
+            {
+                //Response.Write("<script language=javascript>alert('Cédula de paciente ya registrada')</script>");
+                ViewBag.ErrorMessage = "Cédula de paciente ya registrada";
+                return View(patient);
+            }
+            return View(patient);
+        }
+        /*
+         *  // GET: Patient/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,62 +65,39 @@ namespace ElectronicNotebook.Controllers
             }
             return View(patient);
         }
+       // GET: Patient/Edit/5
+       public ActionResult Edit(int? id)
+       {
+           if (id == null)
+           {
+               return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+           }
+           Patient patient = db.Patients.Find(id);
+           if (patient == null)
+           {
+               return HttpNotFound();
+           }
+           return View(patient);
+       }
 
-        // GET: Patient/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: Patient/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,lastName1,lastName2,email,phone")] Patient patient)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Patients.Add(patient);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+       // POST: Patient/Edit/5
+       // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+       // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+       public ActionResult Edit([Bind(Include = "id,name,lastName1,lastName2,email,phone")] Patient patient)
+       {
+           if (ModelState.IsValid)
+           {
+               db.Entry(patient).State = EntityState.Modified;
+               db.SaveChanges();
+               return RedirectToAction("Index");
+           }
+           return View(patient);
+       }
 
-            return View(patient);
-        }
-
-        // GET: Patient/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Patient patient = db.Patients.Find(id);
-            if (patient == null)
-            {
-                return HttpNotFound();
-            }
-            return View(patient);
-        }
-
-        // POST: Patient/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,lastName1,lastName2,email,phone")] Patient patient)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(patient).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(patient);
-        }
-
-        // GET: Patient/Delete/5
+             // GET: Patient/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -101,7 +109,7 @@ namespace ElectronicNotebook.Controllers
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View("Delete",patient);
         }
 
         // POST: Patient/Delete/5
@@ -110,10 +118,21 @@ namespace ElectronicNotebook.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Patient patient = db.Patients.Find(id);
-            db.Patients.Remove(patient);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+            try
+            {
+                db.Patients.Remove(patient);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                Response.Write("<script language=javascript>alert('No se puede eliminar el paciente con citas asociadas, elimine las citas primero')</script>");
+            }
+            return View(patient);
         }
+
+       */
 
         protected override void Dispose(bool disposing)
         {

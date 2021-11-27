@@ -1,13 +1,16 @@
 ﻿using ElectronicNotebook.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Web.Mvc;
 
 
 namespace ElectronicNotebookTesting.Controllers
 {
     [TestClass]
-    public class AppointmentControllerTest
+    public class AppointmentControllerUnitTest
     {
+
+        //Tests method for index method
         [TestMethod]
         public void TestIndexNotNull()
         {
@@ -24,6 +27,21 @@ namespace ElectronicNotebookTesting.Controllers
             Assert.AreEqual("Index", result.ViewName);
         }
 
+        //Tests method por delete method
+        [TestMethod] public void TestDeleteNotNull() 
+        {
+            AppointmentController controller = new AppointmentController(); 
+            ViewResult result = controller.Delete(DateTime.Parse("2020-12-15"), TimeSpan.Parse("13:00")) as ViewResult; 
+            Assert.IsNotNull(result); 
+        }
+        [TestMethod] public void TestDeleteView() 
+        {
+            AppointmentController controller = new AppointmentController();
+            ViewResult result = controller.Delete(DateTime.Parse("2020-12-15"), TimeSpan.Parse("13:00")) as ViewResult;
+            Assert.AreEqual("Delete", result.ViewName); 
+        }
+
+        //Tests method for create method
         [TestMethod]
         public void TestCreateView()
         {

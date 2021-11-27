@@ -43,19 +43,39 @@ namespace ElectronicNotebook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "date,time,patientId,professionalId")] Appointment appointment)
         {
-            try
+            ViewBag.ErrorMessage = "";
+
+            if (appointment.time.Hours > 20 || appointment.time.Hours < 7)
             {
-                if (ModelState.IsValid)
+                ViewBag.ErrorMessage = "Hora inválida: el horario laboral es de 7hs a 20hs";
+                ViewBag.timeError = true;
+            }
+            else {
+                try
                 {
-                    db.Appointments.Add(appointment);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+             
+                    if (ModelState.IsValid)
+                    {
+                        db.Appointments.Add(appointment);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+
                 }
-            }
-            catch {
-                Response.Write("<script language=javascript>alert('Ya hay una cita agendada a la hora y fecha digitadas. Por favor agendarla en otro momento. Volverá a la página de registro de citas.')</script>");
-            }
-           
+                catch (Exception ex)
+                {
+                    if (appointment.time.Days != 0)
+                    {
+                        ViewBag.ErrorMessage = "La hora debe de estar en el formato hh:mm y en el rango de 00:00 a 23:59";
+                        ViewBag.timeError = true;
+                    }
+                    else
+                    {
+                        Response.Write("<script language=javascript>alert('Ya hay una cita agendada a la hora y fecha digitadas. Por favor agendarla en otro momento. Volverá a la página de registro de citas.')</script>");
+                    }
+                }
+
+            }         
             ViewBag.patientId = new SelectList(db.Patients, "id", "id", appointment.patientId);
             ViewBag.professionalId = new SelectList(db.Professionals, "id", "id", appointment.professionalId);
             return View(appointment);

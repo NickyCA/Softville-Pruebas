@@ -27,7 +27,7 @@ namespace ElectronicNotebook.Models
         public int id { get; set; }
 
         [Required(ErrorMessage = "Ingrese nombre")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use solo letras")]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Use solo letras")]
         public string name { get; set; }
 
         [Required(ErrorMessage = "Ingrese apellido")]
@@ -38,7 +38,7 @@ namespace ElectronicNotebook.Models
         public string lastName2 { get; set; }
 
         [Required(ErrorMessage = "Ingrese correo")]
-        [EmailAddress(ErrorMessage = "Ingrese correo válido")]
+        [RegularExpression("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$", ErrorMessage = "formato de correo inválido")]
         public string email { get; set; }
 
         [Required(ErrorMessage = "Ingrese teléfono")]

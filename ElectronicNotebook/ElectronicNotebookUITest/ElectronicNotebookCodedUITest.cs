@@ -24,13 +24,13 @@ namespace ElectronicNotebookUITest
 
         [TestInitialize()]        
         public void MyTestInitialize()
-        {
-            this.UIMap.openApplicationHomePage();
+        {            
         }
 
         [TestMethod]
         public void LoginPageElements()
         {
+            this.UIMap.openApplicationHomePage();
             this.UIMap.existHiperLinkPaginaPrincipal();
             this.UIMap.existHiperLinkRegistrarCita();
             this.UIMap.existHiperLinkRegistrarPaciente();
@@ -43,10 +43,14 @@ namespace ElectronicNotebookUITest
         [TestMethod]
         public void AppointmentsListElements()
         {
-
+            this.UIMap.login();
+            this.UIMap.existAppointmentTitle();
+            this.UIMap.existDateColumn();
+            this.UIMap.existTimeColumn();
+            this.UIMap.existPacientNameColumn();
+            this.UIMap.existProfessionalColumnName();
 
         }
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.

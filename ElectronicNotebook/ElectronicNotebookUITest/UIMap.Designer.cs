@@ -30,6 +30,32 @@ namespace ElectronicNotebookUITest
     {
         
         /// <summary>
+        /// existAppointmentTitle - Use 'existAppointmentTitleExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void existAppointmentTitle()
+        {
+            #region Variable Declarations
+            WinText uIAgendaElectrónicaGooText = this.UINuevapestañaGoogleChWindow.UICitasPróximasGroup.UIAgendaElectrónicaGooText;
+            #endregion
+
+            // Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' label equals 'True'
+            Assert.AreEqual(this.existAppointmentTitleExpectedValues.UIAgendaElectrónicaGooTextExists, uIAgendaElectrónicaGooText.Exists, "Upcoming appointment title does not exist");
+        }
+        
+        /// <summary>
+        /// existDateColumn - Use 'existDateColumnExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void existDateColumn()
+        {
+            #region Variable Declarations
+            WinColumnHeader uIAgendaElectrónicaGooColumnHeader = this.UINuevapestañaGoogleChWindow.UIItemTable.UIItemRow.UIAgendaElectrónicaGooColumnHeader;
+            #endregion
+
+            // Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+            Assert.AreEqual(this.existDateColumnExpectedValues.UIAgendaElectrónicaGooColumnHeaderExists, uIAgendaElectrónicaGooColumnHeader.Exists, "Column Fecha does not exist on Appointment list");
+        }
+        
+        /// <summary>
         /// existHiperLinkPaginaPrincipal - Use 'existHiperLinkPaginaPrincipalExpectedValues' to pass parameters into this method.
         /// </summary>
         public void existHiperLinkPaginaPrincipal()
@@ -108,6 +134,19 @@ namespace ElectronicNotebookUITest
         }
         
         /// <summary>
+        /// existPacientNameColumn - Use 'existPacientNameColumnExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void existPacientNameColumn()
+        {
+            #region Variable Declarations
+            WinColumnHeader uIAgendaElectrónicaGooColumnHeader2 = this.UINuevapestañaGoogleChWindow.UIItemTable.UIItemRow.UIAgendaElectrónicaGooColumnHeader2;
+            #endregion
+
+            // Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+            Assert.AreEqual(this.existPacientNameColumnExpectedValues.UIAgendaElectrónicaGooColumnHeader2Exists, uIAgendaElectrónicaGooColumnHeader2.Exists, "Column pacient name does not exist");
+        }
+        
+        /// <summary>
         /// existPasswordInput - Use 'existPasswordInputExpectedValues' to pass parameters into this method.
         /// </summary>
         public void existPasswordInput()
@@ -118,6 +157,55 @@ namespace ElectronicNotebookUITest
 
             // Verify that the 'Exists' property of text box equals 'True'
             Assert.AreEqual(this.existPasswordInputExpectedValues.UIItemEditExists, uIItemEdit.Exists, "The input to write the password does not exist");
+        }
+        
+        /// <summary>
+        /// existProfessionalColumnName - Use 'existProfessionalColumnNameExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void existProfessionalColumnName()
+        {
+            #region Variable Declarations
+            WinColumnHeader uIAgendaElectrónicaGooColumnHeader3 = this.UINuevapestañaGoogleChWindow.UIItemTable.UIItemRow.UIAgendaElectrónicaGooColumnHeader3;
+            #endregion
+
+            // Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+            Assert.AreEqual(this.existProfessionalColumnNameExpectedValues.UIAgendaElectrónicaGooColumnHeader3Exists, uIAgendaElectrónicaGooColumnHeader3.Exists, "Professional column name does not exist");
+        }
+        
+        /// <summary>
+        /// existTimeColumn - Use 'existTimeColumnExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void existTimeColumn()
+        {
+            #region Variable Declarations
+            WinColumnHeader uIAgendaElectrónicaGooColumnHeader1 = this.UINuevapestañaGoogleChWindow.UIItemTable.UIItemRow.UIAgendaElectrónicaGooColumnHeader1;
+            #endregion
+
+            // Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+            Assert.AreEqual(this.existTimeColumnExpectedValues.UIAgendaElectrónicaGooColumnHeader1Exists, uIAgendaElectrónicaGooColumnHeader1.Exists, "Column time does not exist on appointment list");
+        }
+        
+        /// <summary>
+        /// login - Use 'loginParams' to pass parameters into this method.
+        /// </summary>
+        public void login()
+        {
+            #region Variable Declarations
+            WinEdit uIBarradedireccionesydEdit = this.UINuevapestañaGoogleChWindow.UIItemGroup.UIBarradedireccionesydEdit;
+            WinControl uIChromeLegacyWindowDocument = this.UINuevapestañaGoogleChWindow.UIChromeLegacyWindowWindow13.UIChromeLegacyWindowDocument;
+            #endregion
+
+            // Launch '%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe'
+            ApplicationUnderTest uINuevapestañaGoogleChWindow = ApplicationUnderTest.Launch(this.loginParams.UINuevapestañaGoogleChWindowExePath, this.loginParams.UINuevapestañaGoogleChWindowAlternateExePath);
+
+            // Type 'localhost/ElectronicNotebook/' in 'Barra de direcciones y de búsqueda' text box
+            uIBarradedireccionesydEdit.Text = this.loginParams.UIBarradedireccionesydEditText;
+
+            // Type '{Enter}' in 'Barra de direcciones y de búsqueda' text box
+            Keyboard.SendKeys(uIBarradedireccionesydEdit, this.loginParams.UIBarradedireccionesydEditSendKeys, ModifierKeys.None);
+
+            // Type '{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}' in 'Chrome Legacy Window' document
+            Keyboard.SendKeys(uIChromeLegacyWindowDocument, this.loginParams.UIChromeLegacyWindowDocumentSendKeys, ModifierKeys.None);
         }
         
         /// <summary>
@@ -140,6 +228,30 @@ namespace ElectronicNotebookUITest
         }
         
         #region Properties
+        public virtual existAppointmentTitleExpectedValues existAppointmentTitleExpectedValues
+        {
+            get
+            {
+                if ((this.mexistAppointmentTitleExpectedValues == null))
+                {
+                    this.mexistAppointmentTitleExpectedValues = new existAppointmentTitleExpectedValues();
+                }
+                return this.mexistAppointmentTitleExpectedValues;
+            }
+        }
+        
+        public virtual existDateColumnExpectedValues existDateColumnExpectedValues
+        {
+            get
+            {
+                if ((this.mexistDateColumnExpectedValues == null))
+                {
+                    this.mexistDateColumnExpectedValues = new existDateColumnExpectedValues();
+                }
+                return this.mexistDateColumnExpectedValues;
+            }
+        }
+        
         public virtual existHiperLinkPaginaPrincipalExpectedValues existHiperLinkPaginaPrincipalExpectedValues
         {
             get
@@ -212,6 +324,18 @@ namespace ElectronicNotebookUITest
             }
         }
         
+        public virtual existPacientNameColumnExpectedValues existPacientNameColumnExpectedValues
+        {
+            get
+            {
+                if ((this.mexistPacientNameColumnExpectedValues == null))
+                {
+                    this.mexistPacientNameColumnExpectedValues = new existPacientNameColumnExpectedValues();
+                }
+                return this.mexistPacientNameColumnExpectedValues;
+            }
+        }
+        
         public virtual existPasswordInputExpectedValues existPasswordInputExpectedValues
         {
             get
@@ -221,6 +345,42 @@ namespace ElectronicNotebookUITest
                     this.mexistPasswordInputExpectedValues = new existPasswordInputExpectedValues();
                 }
                 return this.mexistPasswordInputExpectedValues;
+            }
+        }
+        
+        public virtual existProfessionalColumnNameExpectedValues existProfessionalColumnNameExpectedValues
+        {
+            get
+            {
+                if ((this.mexistProfessionalColumnNameExpectedValues == null))
+                {
+                    this.mexistProfessionalColumnNameExpectedValues = new existProfessionalColumnNameExpectedValues();
+                }
+                return this.mexistProfessionalColumnNameExpectedValues;
+            }
+        }
+        
+        public virtual existTimeColumnExpectedValues existTimeColumnExpectedValues
+        {
+            get
+            {
+                if ((this.mexistTimeColumnExpectedValues == null))
+                {
+                    this.mexistTimeColumnExpectedValues = new existTimeColumnExpectedValues();
+                }
+                return this.mexistTimeColumnExpectedValues;
+            }
+        }
+        
+        public virtual loginParams loginParams
+        {
+            get
+            {
+                if ((this.mloginParams == null))
+                {
+                    this.mloginParams = new loginParams();
+                }
+                return this.mloginParams;
             }
         }
         
@@ -262,6 +422,10 @@ namespace ElectronicNotebookUITest
         #endregion
         
         #region Fields
+        private existAppointmentTitleExpectedValues mexistAppointmentTitleExpectedValues;
+        
+        private existDateColumnExpectedValues mexistDateColumnExpectedValues;
+        
         private existHiperLinkPaginaPrincipalExpectedValues mexistHiperLinkPaginaPrincipalExpectedValues;
         
         private existHiperLinkRegistrarCitaExpectedValues mexistHiperLinkRegistrarCitaExpectedValues;
@@ -274,13 +438,51 @@ namespace ElectronicNotebookUITest
         
         private existLogInButtonExpectedValues mexistLogInButtonExpectedValues;
         
+        private existPacientNameColumnExpectedValues mexistPacientNameColumnExpectedValues;
+        
         private existPasswordInputExpectedValues mexistPasswordInputExpectedValues;
+        
+        private existProfessionalColumnNameExpectedValues mexistProfessionalColumnNameExpectedValues;
+        
+        private existTimeColumnExpectedValues mexistTimeColumnExpectedValues;
+        
+        private loginParams mloginParams;
         
         private openApplicationHomePageParams mopenApplicationHomePageParams;
         
         private UINuevapestañaGoogleChWindow mUINuevapestañaGoogleChWindow;
         
         private UIQuieresguardarlacontWindow mUIQuieresguardarlacontWindow;
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'existAppointmentTitle'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class existAppointmentTitleExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' label equals 'True'
+        /// </summary>
+        public bool UIAgendaElectrónicaGooTextExists = true;
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'existDateColumn'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class existDateColumnExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+        /// </summary>
+        public bool UIAgendaElectrónicaGooColumnHeaderExists = true;
         #endregion
     }
     
@@ -375,6 +577,21 @@ namespace ElectronicNotebookUITest
     }
     
     /// <summary>
+    /// Parameters to be passed into 'existPacientNameColumn'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class existPacientNameColumnExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+        /// </summary>
+        public bool UIAgendaElectrónicaGooColumnHeader2Exists = true;
+        #endregion
+    }
+    
+    /// <summary>
     /// Parameters to be passed into 'existPasswordInput'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
@@ -386,6 +603,71 @@ namespace ElectronicNotebookUITest
         /// Verify that the 'Exists' property of text box equals 'True'
         /// </summary>
         public bool UIItemEditExists = true;
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'existProfessionalColumnName'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class existProfessionalColumnNameExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+        /// </summary>
+        public bool UIAgendaElectrónicaGooColumnHeader3Exists = true;
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'existTimeColumn'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class existTimeColumnExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'Exists' property of 'Agenda Electrónica - Google Chrome' column header equals 'True'
+        /// </summary>
+        public bool UIAgendaElectrónicaGooColumnHeader1Exists = true;
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'login'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class loginParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Launch '%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe'
+        /// </summary>
+        public string UINuevapestañaGoogleChWindowExePath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
+        
+        /// <summary>
+        /// Launch '%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe'
+        /// </summary>
+        public string UINuevapestañaGoogleChWindowAlternateExePath = "%ProgramFiles(x86)%\\Google\\Chrome\\Application\\chrome.exe";
+        
+        /// <summary>
+        /// Type 'localhost/ElectronicNotebook/' in 'Barra de direcciones y de búsqueda' text box
+        /// </summary>
+        public string UIBarradedireccionesydEditText = "localhost/ElectronicNotebook/";
+        
+        /// <summary>
+        /// Type '{Enter}' in 'Barra de direcciones y de búsqueda' text box
+        /// </summary>
+        public string UIBarradedireccionesydEditSendKeys = "{Enter}";
+        
+        /// <summary>
+        /// Type '{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}' in 'Chrome Legacy Window' document
+        /// </summary>
+        public string UIChromeLegacyWindowDocumentSendKeys = "{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}";
         #endregion
     }
     
@@ -430,6 +712,7 @@ namespace ElectronicNotebookUITest
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "Chrome_WidgetWin_1";
             this.WindowTitles.Add("Nueva pestaña - Google Chrome");
             this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            this.WindowTitles.Add("localhost/ElectronicNotebook/ - Google Chrome");
             #endregion
         }
         
@@ -601,6 +884,177 @@ namespace ElectronicNotebookUITest
                 return this.mUIChromeLegacyWindowWindow4;
             }
         }
+        
+        public WinCustom UIAgendaElectrónicaGooCustom
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooCustom == null))
+                {
+                    this.mUIAgendaElectrónicaGooCustom = new WinCustom(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooCustom.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooCustom;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow5 UIChromeLegacyWindowWindow5
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow5 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow5 = new UIChromeLegacyWindowWindow5(this);
+                }
+                return this.mUIChromeLegacyWindowWindow5;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow6 UIChromeLegacyWindowWindow6
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow6 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow6 = new UIChromeLegacyWindowWindow6(this);
+                }
+                return this.mUIChromeLegacyWindowWindow6;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow7 UIChromeLegacyWindowWindow7
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow7 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow7 = new UIChromeLegacyWindowWindow7(this);
+                }
+                return this.mUIChromeLegacyWindowWindow7;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow8 UIChromeLegacyWindowWindow8
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow8 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow8 = new UIChromeLegacyWindowWindow8(this);
+                }
+                return this.mUIChromeLegacyWindowWindow8;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow9 UIChromeLegacyWindowWindow9
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow9 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow9 = new UIChromeLegacyWindowWindow9(this);
+                }
+                return this.mUIChromeLegacyWindowWindow9;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow10 UIChromeLegacyWindowWindow10
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow10 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow10 = new UIChromeLegacyWindowWindow10(this);
+                }
+                return this.mUIChromeLegacyWindowWindow10;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow11 UIChromeLegacyWindowWindow11
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow11 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow11 = new UIChromeLegacyWindowWindow11(this);
+                }
+                return this.mUIChromeLegacyWindowWindow11;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow12 UIChromeLegacyWindowWindow12
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow12 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow12 = new UIChromeLegacyWindowWindow12(this);
+                }
+                return this.mUIChromeLegacyWindowWindow12;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow13 UIChromeLegacyWindowWindow13
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow13 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow13 = new UIChromeLegacyWindowWindow13(this);
+                }
+                return this.mUIChromeLegacyWindowWindow13;
+            }
+        }
+        
+        public UIItemTable UIItemTable
+        {
+            get
+            {
+                if ((this.mUIItemTable == null))
+                {
+                    this.mUIItemTable = new UIItemTable(this);
+                }
+                return this.mUIItemTable;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow14 UIChromeLegacyWindowWindow14
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow14 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow14 = new UIChromeLegacyWindowWindow14(this);
+                }
+                return this.mUIChromeLegacyWindowWindow14;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow15 UIChromeLegacyWindowWindow15
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow15 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow15 = new UIChromeLegacyWindowWindow15(this);
+                }
+                return this.mUIChromeLegacyWindowWindow15;
+            }
+        }
+        
+        public UIChromeLegacyWindowWindow16 UIChromeLegacyWindowWindow16
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowWindow16 == null))
+                {
+                    this.mUIChromeLegacyWindowWindow16 = new UIChromeLegacyWindowWindow16(this);
+                }
+                return this.mUIChromeLegacyWindowWindow16;
+            }
+        }
         #endregion
         
         #region Fields
@@ -631,6 +1085,34 @@ namespace ElectronicNotebookUITest
         private UIChromeLegacyWindowWindow3 mUIChromeLegacyWindowWindow3;
         
         private UIChromeLegacyWindowWindow4 mUIChromeLegacyWindowWindow4;
+        
+        private WinCustom mUIAgendaElectrónicaGooCustom;
+        
+        private UIChromeLegacyWindowWindow5 mUIChromeLegacyWindowWindow5;
+        
+        private UIChromeLegacyWindowWindow6 mUIChromeLegacyWindowWindow6;
+        
+        private UIChromeLegacyWindowWindow7 mUIChromeLegacyWindowWindow7;
+        
+        private UIChromeLegacyWindowWindow8 mUIChromeLegacyWindowWindow8;
+        
+        private UIChromeLegacyWindowWindow9 mUIChromeLegacyWindowWindow9;
+        
+        private UIChromeLegacyWindowWindow10 mUIChromeLegacyWindowWindow10;
+        
+        private UIChromeLegacyWindowWindow11 mUIChromeLegacyWindowWindow11;
+        
+        private UIChromeLegacyWindowWindow12 mUIChromeLegacyWindowWindow12;
+        
+        private UIChromeLegacyWindowWindow13 mUIChromeLegacyWindowWindow13;
+        
+        private UIItemTable mUIItemTable;
+        
+        private UIChromeLegacyWindowWindow14 mUIChromeLegacyWindowWindow14;
+        
+        private UIChromeLegacyWindowWindow15 mUIChromeLegacyWindowWindow15;
+        
+        private UIChromeLegacyWindowWindow16 mUIChromeLegacyWindowWindow16;
         #endregion
     }
     
@@ -725,6 +1207,22 @@ namespace ElectronicNotebookUITest
                 return this.mUIItemEdit1;
             }
         }
+        
+        public WinEdit UIFechaEdit
+        {
+            get
+            {
+                if ((this.mUIFechaEdit == null))
+                {
+                    this.mUIFechaEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUIFechaEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Fecha";
+                    this.mUIFechaEdit.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIFechaEdit;
+            }
+        }
         #endregion
         
         #region Fields
@@ -737,6 +1235,8 @@ namespace ElectronicNotebookUITest
         private WinButton mUIAgendaElectrónicaGooButton;
         
         private WinEdit mUIItemEdit1;
+        
+        private WinEdit mUIFechaEdit;
         #endregion
     }
     
@@ -1036,12 +1536,47 @@ namespace ElectronicNotebookUITest
                 return this.mUIItemEdit1;
             }
         }
+        
+        public WinSpinner UIItemSpinner
+        {
+            get
+            {
+                if ((this.mUIItemSpinner == null))
+                {
+                    this.mUIItemSpinner = new WinSpinner(this);
+                    #region Search Criteria
+                    this.mUIItemSpinner.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIItemSpinner;
+            }
+        }
+        
+        public WinButton UIAgendaElectrónicaGooButton
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooButton == null))
+                {
+                    this.mUIAgendaElectrónicaGooButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooButton.SearchProperties[WinButton.PropertyNames.Name] = "Inicio de Sesión";
+                    this.mUIAgendaElectrónicaGooButton.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooButton;
+            }
+        }
         #endregion
         
         #region Fields
         private WinEdit mUIItemEdit;
         
         private WinEdit mUIItemEdit1;
+        
+        private WinSpinner mUIItemSpinner;
+        
+        private WinButton mUIAgendaElectrónicaGooButton;
         #endregion
     }
     
@@ -1225,6 +1760,566 @@ namespace ElectronicNotebookUITest
         
         #region Fields
         private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow5 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow5(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "105283904";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIAgendaElectrónicaGooDocument
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooDocument == null))
+                {
+                    this.mUIAgendaElectrónicaGooDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.Name] = "Agenda Electrónica";
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIAgendaElectrónicaGooDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow6 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow6(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "99718976";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIAgendaElectrónicaGooDocument
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooDocument == null))
+                {
+                    this.mUIAgendaElectrónicaGooDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.Name] = "Agenda Electrónica";
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIAgendaElectrónicaGooDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow7 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow7(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "98419776";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIAgendaElectrónicaGooDocument
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooDocument == null))
+                {
+                    this.mUIAgendaElectrónicaGooDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.Name] = "Agenda Electrónica";
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIAgendaElectrónicaGooDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow8 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow8(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "137633376";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIAgendaElectrónicaGooDocument
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooDocument == null))
+                {
+                    this.mUIAgendaElectrónicaGooDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.Name] = "Agenda Electrónica";
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIAgendaElectrónicaGooDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow9 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow9(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "106212416";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIAgendaElectrónicaGooDocument
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooDocument == null))
+                {
+                    this.mUIAgendaElectrónicaGooDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.Name] = "Agenda Electrónica";
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIAgendaElectrónicaGooDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow10 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow10(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "171127168";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIAgendaElectrónicaGooDocument
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooDocument == null))
+                {
+                    this.mUIAgendaElectrónicaGooDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.Name] = "Agenda Electrónica";
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIAgendaElectrónicaGooDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow11 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow11(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "133819328";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIChromeLegacyWindowDocument
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowDocument == null))
+                {
+                    this.mUIChromeLegacyWindowDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIChromeLegacyWindowDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIChromeLegacyWindowDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIChromeLegacyWindowDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIChromeLegacyWindowDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow12 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow12(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "100496832";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIChromeLegacyWindowDocument
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowDocument == null))
+                {
+                    this.mUIChromeLegacyWindowDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIChromeLegacyWindowDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIChromeLegacyWindowDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIChromeLegacyWindowDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIChromeLegacyWindowDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow13 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow13(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "4661184";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIChromeLegacyWindowDocument
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowDocument == null))
+                {
+                    this.mUIChromeLegacyWindowDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIChromeLegacyWindowDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIChromeLegacyWindowDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIChromeLegacyWindowDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIChromeLegacyWindowDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIItemTable : WinTable
+    {
+        
+        public UIItemTable(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public UIItemRow UIItemRow
+        {
+            get
+            {
+                if ((this.mUIItemRow == null))
+                {
+                    this.mUIItemRow = new UIItemRow(this);
+                }
+                return this.mUIItemRow;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIItemRow mUIItemRow;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIItemRow : WinRow
+    {
+        
+        public UIItemRow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinColumnHeader UIAgendaElectrónicaGooColumnHeader
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooColumnHeader == null))
+                {
+                    this.mUIAgendaElectrónicaGooColumnHeader = new WinColumnHeader(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooColumnHeader.SearchProperties[WinControl.PropertyNames.Name] = "Fecha";
+                    this.mUIAgendaElectrónicaGooColumnHeader.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooColumnHeader;
+            }
+        }
+        
+        public WinColumnHeader UIAgendaElectrónicaGooColumnHeader1
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooColumnHeader1 == null))
+                {
+                    this.mUIAgendaElectrónicaGooColumnHeader1 = new WinColumnHeader(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooColumnHeader1.SearchProperties[WinControl.PropertyNames.Name] = "Hora";
+                    this.mUIAgendaElectrónicaGooColumnHeader1.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooColumnHeader1;
+            }
+        }
+        
+        public WinColumnHeader UIAgendaElectrónicaGooColumnHeader2
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooColumnHeader2 == null))
+                {
+                    this.mUIAgendaElectrónicaGooColumnHeader2 = new WinColumnHeader(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooColumnHeader2.SearchProperties[WinControl.PropertyNames.Name] = "Nombre del paciente";
+                    this.mUIAgendaElectrónicaGooColumnHeader2.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooColumnHeader2;
+            }
+        }
+        
+        public WinColumnHeader UIAgendaElectrónicaGooColumnHeader3
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooColumnHeader3 == null))
+                {
+                    this.mUIAgendaElectrónicaGooColumnHeader3 = new WinColumnHeader(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooColumnHeader3.SearchProperties[WinControl.PropertyNames.Name] = "Nombre del profesional que atiende";
+                    this.mUIAgendaElectrónicaGooColumnHeader3.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooColumnHeader3;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinColumnHeader mUIAgendaElectrónicaGooColumnHeader;
+        
+        private WinColumnHeader mUIAgendaElectrónicaGooColumnHeader1;
+        
+        private WinColumnHeader mUIAgendaElectrónicaGooColumnHeader2;
+        
+        private WinColumnHeader mUIAgendaElectrónicaGooColumnHeader3;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow14 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow14(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "107709568";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIAgendaElectrónicaGooDocument
+        {
+            get
+            {
+                if ((this.mUIAgendaElectrónicaGooDocument == null))
+                {
+                    this.mUIAgendaElectrónicaGooDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.Name] = "Agenda Electrónica";
+                    this.mUIAgendaElectrónicaGooDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIAgendaElectrónicaGooDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIAgendaElectrónicaGooDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIAgendaElectrónicaGooDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow15 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow15(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "134864000";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIChromeLegacyWindowDocument
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowDocument == null))
+                {
+                    this.mUIChromeLegacyWindowDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIChromeLegacyWindowDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIChromeLegacyWindowDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIChromeLegacyWindowDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIChromeLegacyWindowDocument;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "16.0.29514.35")]
+    public class UIChromeLegacyWindowWindow16 : WinWindow
+    {
+        
+        public UIChromeLegacyWindowWindow16(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "33485312";
+            this.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+            #endregion
+        }
+        
+        #region Properties
+        public WinControl UIChromeLegacyWindowDocument
+        {
+            get
+            {
+                if ((this.mUIChromeLegacyWindowDocument == null))
+                {
+                    this.mUIChromeLegacyWindowDocument = new WinControl(this);
+                    #region Search Criteria
+                    this.mUIChromeLegacyWindowDocument.SearchProperties[UITestControl.PropertyNames.ControlType] = "Document";
+                    this.mUIChromeLegacyWindowDocument.WindowTitles.Add("Agenda Electrónica - Google Chrome");
+                    #endregion
+                }
+                return this.mUIChromeLegacyWindowDocument;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinControl mUIChromeLegacyWindowDocument;
         #endregion
     }
     

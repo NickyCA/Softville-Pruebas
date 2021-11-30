@@ -96,7 +96,7 @@
     <Compile Include="Controllers\AppointmentControllerIntegrationTest.cs" />
     <Compile Include="Controllers\LoginControllerTest.cs" />
     <Compile Include="Controllers\PatientControllerUnitTest.cs" />
-    <Compile Include="Controllers\PatientControllerIntegrationTest.cs" />
+    <Compile Include="Controllers\PatientControllerWhiteBoxTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

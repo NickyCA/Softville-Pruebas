@@ -14,6 +14,7 @@ namespace ElectronicNotebookTesting.Controllers
     {
         private ElectronicNotebookDatabaseEntities db = new ElectronicNotebookDatabaseEntities();
 
+        //caso de crear un paciente sin errores 
         [TestMethod]
         public void CreateNewValidPatient ()
         {
@@ -29,7 +30,7 @@ namespace ElectronicNotebookTesting.Controllers
             DeleteConfirmed(patient.id);
         }
 
-        //
+        //caso de crear un paciente con cédula repetida
         [TestMethod]
         public void CreateInValidPatient()
         {

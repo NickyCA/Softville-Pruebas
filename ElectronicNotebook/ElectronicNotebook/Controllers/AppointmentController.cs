@@ -104,7 +104,11 @@ namespace ElectronicNotebook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(DateTime date, TimeSpan time)
         {
+            
             Appointment appointment = db.Appointments.Find(date, time);
+            if (appointment == null) {
+                return RedirectToAction("Index");
+            }
             db.Appointments.Remove(appointment);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -19,7 +19,7 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "form-control" } })
 
-            @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()) && @ViewBag.ErrorMessage == "")
+            @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()) && @ViewBag.TimeErrorMessage == "")
             {
 
                 @Html.ValidationMessageFor(model => model.date, "La fecha debe de estar en el formato aaaa-mm-dd", new { @class = "text-danger" })
@@ -33,8 +33,8 @@
         <div class="col-md-10">
 
             @Html.EditorFor(model => model.time, new { htmlAttributes = new { @class = "form-control" } })
-            
-            <h5 class="text-danger">@ViewBag.ErrorMessage</h5>
+
+            <h5 class="text-danger">@ViewBag.TimeErrorMessage</h5>
         </div>
     </div>
 
@@ -54,13 +54,15 @@
         </div>
     </div>
 
+    <h4 class="text-danger">@ViewBag.ErrorMessage</h4>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Crear" class="btn btn-default" />
+            <input type="submit" value="Registrar" class="btn btn-default" />
         </div>
     </div>
 
-   
+
 </div>
 }
 

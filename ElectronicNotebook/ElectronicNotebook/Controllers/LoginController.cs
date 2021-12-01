@@ -13,7 +13,7 @@ namespace ElectronicNotebook.Controllers
     public class LoginController : Controller
     {
         private ElectronicNotebookDatabaseEntities db = new ElectronicNotebookDatabaseEntities();
-
+        
         // GET: Login/Create
         public ActionResult Create()
         {
@@ -29,24 +29,55 @@ namespace ElectronicNotebook.Controllers
         public ActionResult Create([Bind(Include = "id,password")] Secretary secretary)
         {            
             string input_password = secretary.password;
-
+            
             System.Diagnostics.Debug.WriteLine(secretary.id);
             System.Diagnostics.Debug.WriteLine(secretary.password);
+
+
+            
             
             if (ModelState.IsValid)
             {
                 secretary = db.Secretaries.Find(secretary.id);
+                LoginAttempt la = db.LoginAttempts.Find(secretary.id);
+                if (la.attempts == 5)
+                {
+                    ModelState.AddModelError(string.Empty, "You have reached the maximum number of login attempts");
+                    return View(secretary);
+                }
+
                 if (secretary == null)
                  {
                     ModelState.AddModelError(string.Empty, "Invalid UserName.");
+                    
                     return View(secretary);
                 }
                 
                 if (secretary.password != input_password)
                 {
+                    
+
                     ModelState.AddModelError(string.Empty, "Invalid Password.");
+                    
+                    db.LoginAttempts.Remove(la);
+                    db.SaveChanges();
+                    la.attempts++;
+                    System.Diagnostics.Debug.WriteLine(la.attempts);
+                    db.LoginAttempts.Add(la);
+                    db.SaveChanges();
                     return View(secretary);
-                }               
+                }
+               /* if (la.attempts == 5)
+                {
+                    db.LoginAttempts.Remove(la);
+                    db.SaveChanges();
+                    la.attempts=0;
+                    System.Diagnostics.Debug.WriteLine("Si contraseña correcta");
+
+                    System.Diagnostics.Debug.WriteLine(la.attempts);
+                    db.LoginAttempts.Add(la);
+                    db.SaveChanges();
+                }*/
 
                 return RedirectToAction("Index", "Appointment");
             }

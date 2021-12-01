@@ -14,6 +14,10 @@ delete from Appointment
 delete from Secretary
 delete from Professional
 delete from Patients
+delete from LoginAttempt
+
+
+
 
 INSERT INTO Secretary (name, lastName1, lastName2, id, password)
 VALUES ('Veronica', 'Hernández', 'Chavarría', 207540415, 'admin1234'),
@@ -36,3 +40,9 @@ VALUES ('2020-12-15', '13:00', 501240597, 301240497 ),
 	   ('2020-12-16', '17:00', 401230987, 701420654 ),
 	   ('2021-01-10', '11:00', 601240784, 709540329 ),
 	   ('2023-08-10', '10:00', 701240995, 301240497)
+
+
+INSERT INTO LoginAttempt (id, attempts)
+VALUES ( 207540415, 0),
+	    ( 307650214, 0),
+		( 701420987, 0)

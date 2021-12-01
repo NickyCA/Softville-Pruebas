@@ -146,6 +146,7 @@
     <Compile Include="Models\Appointment.cs">
       <DependentUpon>ElectronicNotebookModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AttemptController.cs" />
     <Compile Include="Models\ElectronicNotebookModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -160,6 +161,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ElectronicNotebookModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginAttempt.cs">
+      <DependentUpon>ElectronicNotebookModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Patient.cs">
       <DependentUpon>ElectronicNotebookModel.tt</DependentUpon>
@@ -247,6 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Attempt\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

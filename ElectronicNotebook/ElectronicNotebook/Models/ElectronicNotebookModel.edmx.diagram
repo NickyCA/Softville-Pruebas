@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="ElectronicNotebookDatabaseModel.Secretary" Width="1.5" PointX="3.125" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="ElectronicNotebookDatabaseModel.pacienteFK" ManuallyRouted="false" />
         <AssociationConnector Association="ElectronicNotebookDatabaseModel.profesionalFK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ElectronicNotebookDatabaseModel.LoginAttempt" Width="1.5" PointX="5.375" PointY="4.125" />
+        <AssociationConnector Association="ElectronicNotebookDatabaseModel.secretaryFK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

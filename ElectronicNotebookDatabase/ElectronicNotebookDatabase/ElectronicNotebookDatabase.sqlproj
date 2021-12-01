@@ -63,6 +63,7 @@
     <Build Include="Patients.sql" />
     <Build Include="Professional.sql" />
     <Build Include="Appointment.sql" />
+    <Build Include="LoginAttempt.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.ElectronicNotebook.sql" />

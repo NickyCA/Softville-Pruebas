@@ -39,20 +39,21 @@ namespace ElectronicNotebook.Controllers
             if (ModelState.IsValid)
             {
                 secretary = db.Secretaries.Find(secretary.id);
+
+                if (secretary == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid UserName.");
+
+                    return View("Create", secretary);
+                }
+
                 LoginAttempt la = db.LoginAttempts.Find(secretary.id);
                 if (la.attempts == 5)
                 {
                     ModelState.AddModelError(string.Empty, "You have reached the maximum number of login attempts");
-                    return View(secretary);
+                    return View("Create", secretary);
                 }
 
-                if (secretary == null)
-                 {
-                    ModelState.AddModelError(string.Empty, "Invalid UserName.");
-                    
-                    return View(secretary);
-                }
-                
                 if (secretary.password != input_password)
                 {
                     
@@ -65,7 +66,7 @@ namespace ElectronicNotebook.Controllers
                     System.Diagnostics.Debug.WriteLine(la.attempts);
                     db.LoginAttempts.Add(la);
                     db.SaveChanges();
-                    return View(secretary);
+                    return View("Create", secretary);
                 }
                /* if (la.attempts == 5)
                 {
@@ -82,7 +83,7 @@ namespace ElectronicNotebook.Controllers
                 return RedirectToAction("Index", "Appointment");
             }
 
-            return View(secretary);
+            return View("Create", secretary);
 
         }
        

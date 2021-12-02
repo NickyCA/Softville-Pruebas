@@ -1,0 +1,11 @@
+﻿@if (!string.IsNullOrEmpty(Convert.ToString(Session["id"])))
+{
+    using (Html.BeginForm("LogOff", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Bienvenido : @Session["id"]</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a></li>
+        </ul>
+    }
+}

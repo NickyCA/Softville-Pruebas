@@ -103,7 +103,7 @@ namespace ElectronicNotebook.Controllers
         public ActionResult LogOff()
         {
             Session["id"] = string.Empty;
-            return RedirectToAction("Create", "secretary");
+            return RedirectToAction("Create", "Login");
         }
     }
 }

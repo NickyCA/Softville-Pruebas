@@ -27,20 +27,6 @@ namespace ElectronicNotebookTesting.Controllers
             Assert.AreEqual("Index", result.ViewName);
         }
 
-        //Tests method por delete method
-        [TestMethod] public void TestDeleteNotNull() 
-        {
-            AppointmentController controller = new AppointmentController(); 
-            ViewResult result = controller.Delete(DateTime.Parse("2020-12-15"), TimeSpan.Parse("13:00")) as ViewResult; 
-            Assert.IsNotNull(result); 
-        }
-        [TestMethod] public void TestDeleteView() 
-        {
-            AppointmentController controller = new AppointmentController();
-            ViewResult result = controller.Delete(DateTime.Parse("2020-12-15"), TimeSpan.Parse("13:00")) as ViewResult;
-            Assert.AreEqual("Delete", result.ViewName); 
-        }
-
         //Tests method for create method
         [TestMethod]
         public void TestCreateView()

@@ -12,14 +12,11 @@ namespace ElectronicNotebook.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Secretary
+    public partial class LoginAttempt
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string lastName1 { get; set; }
-        public string lastName2 { get; set; }
-        public string password { get; set; }
+        public int Id { get; set; }
+        public int attempts { get; set; }
     
-        public virtual LoginAttempt LoginAttempt { get; set; }
+        public virtual Secretary Secretary { get; set; }
     }
 }

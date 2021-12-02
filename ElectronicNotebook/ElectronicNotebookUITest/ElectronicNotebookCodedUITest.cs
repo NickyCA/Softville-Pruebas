@@ -16,38 +16,41 @@ namespace ElectronicNotebookUITest
     /// Summary description for CodedUITest1
     /// </summary>
     [CodedUITest]
-    public class CodedUITest1
+    public class ElectronicNotebookCodedUITest
     {
-        public CodedUITest1()
+        public ElectronicNotebookCodedUITest()
         {
+        }
+
+        [TestInitialize()]        
+        public void MyTestInitialize()
+        {            
         }
 
         [TestMethod]
-        public void CodedUITestMethod1()
+        public void LoginPageElements()
         {
-            // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+            this.UIMap.openApplicationHomePage();
+            this.UIMap.existHiperLinkPaginaPrincipal();
+            this.UIMap.existHiperLinkRegistrarCita();
+            this.UIMap.existHiperLinkRegistrarPaciente();
+            this.UIMap.existHomePageTitle();
+            this.UIMap.existIdInput();
+            this.UIMap.existPasswordInput();
+            this.UIMap.existLogInButton();
         }
 
-        #region Additional test attributes
+        [TestMethod]
+        public void AppointmentsListElements()
+        {
+            this.UIMap.login();
+            this.UIMap.existAppointmentTitle();
+            this.UIMap.existDateColumn();
+            this.UIMap.existTimeColumn();
+            this.UIMap.existPacientNameColumn();
+            this.UIMap.existProfessionalColumnName();
 
-        // You can use the following additional attributes as you write your tests:
-
-        ////Use TestInitialize to run code before running each test 
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
-
-        ////Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
-
-        #endregion
-
+        }
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.

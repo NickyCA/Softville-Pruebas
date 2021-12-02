@@ -15,6 +15,13 @@
           <Property Name="patientId" Type="int" Nullable="false" />
           <Property Name="professionalId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="LoginAttempt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="attempts" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Patients">
           <Key>
             <PropertyRef Name="id" />
@@ -70,8 +77,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="secretaryFK">
+          <End Role="Secretary" Type="Self.Secretary" Multiplicity="1" />
+          <End Role="LoginAttempt" Type="Self.LoginAttempt" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Secretary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LoginAttempt">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ElectronicNotebookDatabaseModelStoreContainer">
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginAttempt" EntityType="Self.LoginAttempt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Professional" EntityType="Self.Professional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Secretary" EntityType="Self.Secretary" Schema="dbo" store:Type="Tables" />
@@ -82,6 +102,10 @@
           <AssociationSet Name="profesionalFK" Association="Self.profesionalFK">
             <End Role="Professional" EntitySet="Professional" />
             <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="secretaryFK" Association="Self.secretaryFK">
+            <End Role="Secretary" EntitySet="Secretary" />
+            <End Role="LoginAttempt" EntitySet="LoginAttempt" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -132,6 +156,7 @@
           <Property Name="lastName1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lastName2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LoginAttempt" Relationship="ElectronicNotebookDatabaseModel.secretaryFK" FromRole="Secretary" ToRole="LoginAttempt" />
         </EntityType>
         <Association Name="pacienteFK">
           <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
@@ -170,7 +195,32 @@
             <End Role="Professional" EntitySet="Professionals" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
+          <EntitySet Name="LoginAttempts" EntityType="ElectronicNotebookDatabaseModel.LoginAttempt" />
+          <AssociationSet Name="secretaryFK" Association="ElectronicNotebookDatabaseModel.secretaryFK">
+            <End Role="Secretary" EntitySet="Secretaries" />
+            <End Role="LoginAttempt" EntitySet="LoginAttempts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="LoginAttempt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="attempts" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Secretary" Relationship="ElectronicNotebookDatabaseModel.secretaryFK" FromRole="LoginAttempt" ToRole="Secretary" />
+        </EntityType>
+        <Association Name="secretaryFK">
+          <End Type="ElectronicNotebookDatabaseModel.Secretary" Role="Secretary" Multiplicity="1" />
+          <End Type="ElectronicNotebookDatabaseModel.LoginAttempt" Role="LoginAttempt" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Secretary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LoginAttempt">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -218,6 +268,14 @@
                 <ScalarProperty Name="lastName1" ColumnName="lastName1" />
                 <ScalarProperty Name="lastName2" ColumnName="lastName2" />
                 <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginAttempts">
+            <EntityTypeMapping TypeName="ElectronicNotebookDatabaseModel.LoginAttempt">
+              <MappingFragment StoreEntitySet="LoginAttempt">
+                <ScalarProperty Name="attempts" ColumnName="attempts" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

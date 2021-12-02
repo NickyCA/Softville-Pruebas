@@ -43,19 +43,41 @@ namespace ElectronicNotebook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "date,time,patientId,professionalId")] Appointment appointment)
         {
+            ViewBag.TimeErrorMessage = "";
+            bool inWorkHours = true;
+
+            if ((appointment.time.Hours > 20 || appointment.time.Hours < 7) && appointment.time.Days == 0)
+            {
+                ViewBag.TimeErrorMessage = "Hora inválida: el horario laboral es de 7hs a 20hs";
+                inWorkHours = false;
+            }
+
             try
             {
-                if (ModelState.IsValid)
+             
+                if (ModelState.IsValid && inWorkHours)
                 {
                     db.Appointments.Add(appointment);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+
             }
-            catch {
-                Response.Write("<script language=javascript>alert('Ya hay una cita agendada a la hora y fecha digitadas. Por favor agendarla en otro momento. Volverá a la página de registro de citas.')</script>");
+            catch (Exception ex)
+            {
+                if (appointment.time.Days != 0)
+                {
+                    ViewBag.TimeErrorMessage = "La hora debe de estar en el formato hh:mm y en el rango de 00:00 a 23:59";
+                       
+                }
+                else
+                {
+                   // Response.Write("<script language=javascript>alert('Ya hay una cita agendada a la hora y fecha digitadas. Por favor agendarla en otro momento. Volverá a la página de registro de citas.')</script>");
+                    ViewBag.ErrorMessage = "Ya hay una cita agendada a la hora y fecha digitadas. Por favor agendarla en otro momento.";
+                }
             }
-           
+
+      
             ViewBag.patientId = new SelectList(db.Patients, "id", "id", appointment.patientId);
             ViewBag.professionalId = new SelectList(db.Professionals, "id", "id", appointment.professionalId);
             return View(appointment);
@@ -82,7 +104,11 @@ namespace ElectronicNotebook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(DateTime date, TimeSpan time)
         {
+            
             Appointment appointment = db.Appointments.Find(date, time);
+            if (appointment == null) {
+                return RedirectToAction("Index");
+            }
             db.Appointments.Remove(appointment);
             db.SaveChanges();
             return RedirectToAction("Index");

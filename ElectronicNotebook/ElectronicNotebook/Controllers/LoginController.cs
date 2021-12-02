@@ -43,7 +43,7 @@ namespace ElectronicNotebook.Controllers
 
                 if (secretary == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid UserName.");
+                    ModelState.AddModelError(string.Empty, "Nombre de usuario inválido.");
 
                     return View("Create", secretary);
                 }
@@ -51,7 +51,7 @@ namespace ElectronicNotebook.Controllers
                 LoginAttempt la = db.LoginAttempts.Find(secretary.id);
                 if (la.attempts == 5)
                 {
-                    ModelState.AddModelError(string.Empty, "You have reached the maximum number of login attempts");
+                    ModelState.AddModelError(string.Empty, "Haz alcanzando el máximo número de intentos de ingreso a tu cuenta");
                     return View("Create", secretary);
                 }
 
@@ -59,7 +59,7 @@ namespace ElectronicNotebook.Controllers
                 {
                     
 
-                    ModelState.AddModelError(string.Empty, "Invalid Password.");
+                    ModelState.AddModelError(string.Empty, "Contraseña inválida.");
                     
                     db.LoginAttempts.Remove(la);
                     db.SaveChanges();

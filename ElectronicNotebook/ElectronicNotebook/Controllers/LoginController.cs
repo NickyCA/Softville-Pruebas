@@ -10,6 +10,7 @@ using ElectronicNotebook.Models;
 
 namespace ElectronicNotebook.Controllers
 {
+   
     public class LoginController : Controller
     {
         private ElectronicNotebookDatabaseEntities db = new ElectronicNotebookDatabaseEntities();
@@ -68,18 +69,19 @@ namespace ElectronicNotebook.Controllers
                     db.SaveChanges();
                     return View("Create", secretary);
                 }
-               /* if (la.attempts == 5)
-                {
-                    db.LoginAttempts.Remove(la);
-                    db.SaveChanges();
-                    la.attempts=0;
-                    System.Diagnostics.Debug.WriteLine("Si contraseña correcta");
+                /* if (la.attempts == 5)
+                 {
+                     db.LoginAttempts.Remove(la);
+                     db.SaveChanges();
+                     la.attempts=0;
+                     System.Diagnostics.Debug.WriteLine("Si contraseña correcta");
 
-                    System.Diagnostics.Debug.WriteLine(la.attempts);
-                    db.LoginAttempts.Add(la);
-                    db.SaveChanges();
-                }*/
-
+                     System.Diagnostics.Debug.WriteLine(la.attempts);
+                     db.LoginAttempts.Add(la);
+                     db.SaveChanges();
+                 }*/
+                Session["id"] = secretary.id;
+                //Session["UserId"] = user.UserId;
                 return RedirectToAction("Index", "Appointment");
             }
 
@@ -94,6 +96,14 @@ namespace ElectronicNotebook.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            Session["id"] = string.Empty;
+            return RedirectToAction("Create", "secretary");
         }
     }
 }

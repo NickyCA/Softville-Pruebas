@@ -10,17 +10,20 @@ using ElectronicNotebook.Models;
 
 namespace ElectronicNotebook.Controllers
 {
+    [CustomAuthFilter]
     public class PatientController : Controller
     {
         private ElectronicNotebookDatabaseEntities db = new ElectronicNotebookDatabaseEntities();
 
         // GET: Patient
+       
         public ActionResult Index()
         {
             return View("Index",db.Patients.ToList());
         }
 
         // GET: Patient/Create
+
         public ActionResult Create()
         {
             return View("Create");

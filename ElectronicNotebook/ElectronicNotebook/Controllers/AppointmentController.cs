@@ -11,13 +11,16 @@ using ElectronicNotebook.Models;
 
 namespace ElectronicNotebook.Controllers
 {
+    [CustomAuthFilter]
     public class AppointmentController : Controller
     {
         private ElectronicNotebookDatabaseEntities db = new ElectronicNotebookDatabaseEntities();
 
         // GET: Appointment
+        [CustomAuthAtribute]
         public ActionResult Index()
         {
+         
             var appointments = db.Appointments.Include(a => a.Patient).Include(a => a.Professional)
                 //.OrderBy(a => a.date.Year)
                 //.OrderBy(a => a.date.Month)
@@ -27,8 +30,9 @@ namespace ElectronicNotebook.Controllers
             return View("Index" , appointments.ToList());
         }
 
-       
+
         // GET: Appointment/Create
+        [CustomAuthAtribute]
         public ActionResult Create()
         {
             ViewBag.patientId = new SelectList(db.Patients, "id", "id");

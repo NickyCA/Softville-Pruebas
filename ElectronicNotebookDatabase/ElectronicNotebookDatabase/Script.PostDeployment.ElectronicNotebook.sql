@@ -9,12 +9,12 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-
+delete from LoginAttempt
 delete from Appointment
 delete from Secretary
 delete from Professional
 delete from Patients
-delete from LoginAttempt
+
 
 
 

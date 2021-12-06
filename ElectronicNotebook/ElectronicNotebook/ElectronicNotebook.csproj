@@ -232,24 +232,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Secretary\Create.cshtml" />
-    <Content Include="Views\Secretary\Delete.cshtml" />
-    <Content Include="Views\Secretary\Details.cshtml" />
-    <Content Include="Views\Secretary\Edit.cshtml" />
-    <Content Include="Views\Secretary\Index.cshtml" />
     <Content Include="Views\Patient\Create.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
-    <Content Include="Views\Professional\Create.cshtml" />
-    <Content Include="Views\Professional\Delete.cshtml" />
-    <Content Include="Views\Professional\Details.cshtml" />
-    <Content Include="Views\Professional\Edit.cshtml" />
-    <Content Include="Views\Professional\Index.cshtml" />
     <Content Include="Views\Appointment\Create.cshtml" />
     <Content Include="Views\Appointment\Delete.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
-    <Content Include="Views\Login\Delete.cshtml" />
-    <Content Include="Views\Login\Details.cshtml" />
-    <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\logOut.cshtml" />
   </ItemGroup>
